@@ -2,7 +2,7 @@ class Teacher < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
-         :validatable, :confirmable, :trackable
+         :validatable, :confirmable
   has_many :students
 
   validates :email, uniqueness: true
