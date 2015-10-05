@@ -165,15 +165,12 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-<<<<<<< HEAD
     smarter_csv (1.1.0)
-=======
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
->>>>>>> e23f2c66cbccd9e76ac3e2a4a3c0be24ae9d2457
     spring (1.4.0)
     sprockets (3.3.5)
       rack (> 1, < 3)
