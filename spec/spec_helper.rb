@@ -1,2 +1,2 @@
-require 'coverall'
-Coveralls.wear!
+# require 'coverall'
+# Coveralls.wear!
