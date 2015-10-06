@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   devise_for :teachers
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   root      'teachers#index'
-  resources :teachers
-  resources :students
+  resources :teachers do
+    resources :students
+  end
 
   post 'teachers/upload'
 

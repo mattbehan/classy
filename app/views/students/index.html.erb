@@ -1,0 +1,21 @@
+<h1><%= @teacher.first_name %>'s students</h1>
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Grade</th>
+      <th>GPA</th>
+      <th>Detentions</th>
+      <th>T-Shirt Size</th>
+    </tr>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.first_name %> <%= student.last_name %></td>
+      <td><%= student.gender %>
+      <td><%= student.grade %></td>
+      <td><%= student.gpa %></td>
+      <td><%= student.detentions %></td>
+      <td><%= student.t_shirt_size %></td>
+    </tr>
+  <% end %>
+</table>
