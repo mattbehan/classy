@@ -2,12 +2,13 @@ class Teacher < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
-         :validatable, :confirmable, :registerable
+         :validatable, :confirmable, :registerable, :rememberable
   has_many :students
 
   validates :email, uniqueness: true
   # Prevents an invalid email address from being added to the database.
   validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  validates :first_name, :last_name, presence: true
 
   def add_detention(student)
 
