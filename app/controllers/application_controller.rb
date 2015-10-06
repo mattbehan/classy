@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_teacher!
-  protect_from_forgery with: :exception
+  # before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :authenticate_teacher!
+  # protect_from_forgery with: :exception
 
-  helper_method :admin?, :authorized?, :not_admin?, :allowed?, :must_be_signed_in
+  # helper_method :admin?, :authorized?, :not_admin?, :allowed?, :must_be_signed_in
 
   def authorized? id
     teacher_session == id.to_i
@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def allowed? authorization_status
-    unless authorization_status
+  def allowed? id
+    unless authorized?(id)
       redirect_to "/teachers/not_authorized"
     end
   end
