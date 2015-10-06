@@ -1,0 +1,2 @@
+<h1><%= @teacher.first_name %> <%= @teacher.last_name %>'s profile</h1>
+<h3><%= @teacher.first_name %> currently has <%= pluralize(@teacher.students.count, 'student') %></h3>
