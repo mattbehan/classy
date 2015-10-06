@@ -14,7 +14,11 @@
       <td><%= student.gender %>
       <td><%= student.grade %></td>
       <td><%= student.gpa %></td>
-      <td><%= student.detentions %></td>
+      <td><%= student.detentions %>
+        <% if authorized?(@student.id)%>
+          <%= button_to "Add detention", "/students/#{student.id}/detentions"%>
+        <% end %>
+      </td>
       <td><%= student.t_shirt_size %></td>
     </tr>
   <% end %>
