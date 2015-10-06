@@ -23,10 +23,10 @@ feature "Adding a new teacher" do
   end
 end
 
-feature "Admin visits " do
-  scenario "sees a list of games and can view them"
+feature "Admin can remove students from classrooms" do
+  scenario "an admin clicks on button to remove a student from a classroom" do
 
-  scenario "can start a new game"
+  end
 end
 
 feature "Teacher adding detention to their student" do
@@ -47,6 +47,8 @@ end
 
 feature "Uploading a CSV of students" do
   scenario "admin clicks the upload button with a valid CSV" do
+    visit "/"
+    expect{ find_by_id('save').click }.to change{Student.count }
 
   end
 end
@@ -56,5 +58,7 @@ feature "Teacher profile" do
 
   end
 
-  scenario "Teacher can click on another teacher"
+  scenario "Teacher can click on another teacher and be taken to their profile" do
+    expect(page).to have_text()
+  end
 end
