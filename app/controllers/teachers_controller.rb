@@ -2,6 +2,10 @@ require 'csv'
 
 class TeachersController < ApplicationController
 
+  before_filter
+  before_filter :authorized?(params[:student_id])
+  before_filter :admin?
+
   def index
     @teachers = Teacher.all
   end
@@ -25,6 +29,11 @@ class TeachersController < ApplicationController
       s.save
     end
     redirect_to root_url
+  end
+
+  def detentions
+    @student = Student.find(params[:student_id])
+
   end
 
 end
