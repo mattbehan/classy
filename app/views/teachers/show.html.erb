@@ -1,2 +1,4 @@
-<h1><%= @teacher.first_name %> <%= @teacher.last_name %>'s profile</h1>
+<div class="card-panel light-blue">
+<h1 class='white-text'><%= @teacher.first_name %> <%= @teacher.last_name %>'s profile</h1>
+</div>
 <h3><%= @teacher.first_name %> currently has <%= pluralize(@teacher.students.count, 'student') %></h3>
