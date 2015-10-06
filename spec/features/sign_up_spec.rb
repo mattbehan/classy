@@ -16,6 +16,7 @@ describe "the sign up process" do
     expect(page).to have_content('Sign up')
   end
 
+  # For some reason I can't get capybara to log in, will address later.
   it "does not sign in an invalid teacher" do
     visit '/teachers'
     fill_in('Email', with: "wrongemail@no.com")
