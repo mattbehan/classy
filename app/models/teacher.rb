@@ -22,6 +22,7 @@ class Teacher < ActiveRecord::Base
   # Sets the passed in teacher as an admin IF the current teacher is an admin.
   def set_admin(teacher)
     self.admin ? teacher.admin = true : nil
+    teacher.save
   end
 
   def average_GPA

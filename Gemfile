@@ -9,9 +9,6 @@ gem 'pg'
 gem 'smarter_csv'
 
 
-gem 'materialize-sass'
-
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,7 +31,7 @@ gem 'devise'
 gem 'coveralls', require: false
 gem 'capybara', '~> 2.5.0'
 
-gem 'mailcatcher'
+# gem 'mailcatcher'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

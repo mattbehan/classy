@@ -35,6 +35,14 @@ class TeachersController < ApplicationController
     @teacher = update_attributes(teacher_update_params)
   end
 
+  def make_admin
+    @teacher = Teacher.find(params[:id])
+    @teacher.admin = true
+    @teacher.save
+    flash[:notice] = "#{@teacher.full_name} was succesfully set as an admin."
+    redirect_to root_path
+  end
+
   def upload
 
     if request.xhr?
@@ -80,8 +88,8 @@ class TeachersController < ApplicationController
   def sign_up_params
     params.require(:teacher).permit(:first_name, :last_name, :email,
                                       :password, :password_confirmation)
-
   end
+
 
   protected
 
