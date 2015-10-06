@@ -34,7 +34,7 @@ gem 'devise'
 gem 'coveralls', require: false
 gem 'capybara', '~> 2.5.0'
 
-gem 'mailcatcher'
+# gem 'mailcatcher'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
