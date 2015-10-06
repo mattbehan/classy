@@ -6,7 +6,7 @@ class TeachersController < ApplicationController
   include TeachersHelper
 
   before_filter only: [:update] { allowed?(params[:teacher_id]) }
-  # before_filter :not_admin?, only: [:upload, :admin]
+  before_filter :not_admin?, only: [:upload, :admin, :remove_from_classroom]
   before_filter :find_teacher, only: [:show, :edit, :update]
 
   def admin
@@ -33,6 +33,14 @@ class TeachersController < ApplicationController
 
   def update
     @teacher = update_attributes(teacher_update_params)
+  end
+
+  def make_admin
+    @teacher = Teacher.find(params[:id])
+    @teacher.admin = true
+    @teacher.save
+    flash[:notice] = "#{@teacher.full_name} was succesfully set as an admin."
+    redirect_to root_path
   end
 
   def upload
@@ -80,8 +88,8 @@ class TeachersController < ApplicationController
   def sign_up_params
     params.require(:teacher).permit(:first_name, :last_name, :email,
                                       :password, :password_confirmation)
-
   end
+
 
   protected
 

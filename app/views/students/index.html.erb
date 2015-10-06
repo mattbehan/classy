@@ -11,14 +11,20 @@
   <% @students.each do |student| %>
     <tr>
       <td><%= student.first_name %> <%= student.last_name %></td>
-      <td><%= student.gender %>
+      <td><%= student.gender %> </td>
       <td><%= student.grade %></td>
       <td><%= student.gpa %></td>
-      <td><%= student.detentions %>
-        <% if authorized?(@student.id)%>
-          <%= button_to "Add detention", "/students/#{student.id}/detentions"%>
+      <td><%= student.detentions %> </td>
+
+        <td><% if authorized?(student.id)%>
+          <%= button_to "Add detention", "/teachers/#{@teacher.id}/students/#{student.id}/detentions", :method => :put %>
         <% end %>
       </td>
+
+      <% if admin? %>
+        <td><%= button_to "Remove from classroom", "/teachers/#{@teacher.id}/students/#{student.id}/remove_from_classroom", :method => :put %> </td>
+      <% end %>
+
       <td><%= student.t_shirt_size %></td>
     </tr>
   <% end %>

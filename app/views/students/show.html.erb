@@ -1,14 +1,21 @@
-<h1><%= @student.first_name %> <%= @student.last_name %></h1>
-<table>
-  <th>Name</th>
-  <th>Gender</th>
-  <th>Grade</th>
-  <th>GPA</th>
-  <th>Detentions</th>
-  <th>T-Shirt Size</th>
-  <tr>
-    <td>
+<h2>  <%= @student.full_name %>  </h2>
+<h4> Teacher:
 
-    </td>
-  </tr>
-</table>
+  <% if @student.teacher %>
+    <%= @student.teacher.full_name %>  </h4>
+  <% elsif !admin? %>
+  none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{@student.id}/add_to_classroom", :method => :put %></h4>
+  <% end %>
+
+<h4> GPA: <%= @student.gpa %>  </h4>
+<h4> Gender: <%= @student.gender %>  </h4>
+<h4> Grade: <%= @student.grade %>  </h4>
+<h4> Detentions: <%= @student.detentions %>  </h4>
+
+<% if authorized?(@student.id)%>
+    <h4><%= button_to "Add detention", "/teachers/#{@student.teacher.id}/students/#{@student.id}/detentions", :method => :put %></h4>
+  <% end %>
+
+<% if admin? && @student.teacher %>
+  <h4><%= button_to "Remove from classroom", "/teachers/#{@student.teacher.id}/students/#{@student.id}/remove_from_classroom", :method => :put %> </h4>
+<% end %>
