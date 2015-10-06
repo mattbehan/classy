@@ -4,7 +4,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.boolean :admin, default: false, null: false
-      
+
       t.timestamps null: false
     end
   end

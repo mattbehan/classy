@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 feature "Adding a new teacher" do
   scenario "when admin submits a valid form" do
