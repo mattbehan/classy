@@ -10,6 +10,7 @@ class TeachersController < ApplicationController
   before_filter :not_admin?, only: [:upload]
   before_action :find_teacher, only: [:show, :edit, :update]
 
+
   def not_authorized
     render "not_authorized"
   end

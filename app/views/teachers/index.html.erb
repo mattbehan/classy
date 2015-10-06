@@ -1,11 +1,21 @@
 <h1>All Teachers</h1>
 <h3>There are currently <%= @teachers.count %> active teachers.</h3>
 
-<table>
-<% @teachers.each do |teacher| %>
-  <tr>
-    <td><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher)%></td>
-    <td><%= pluralize(teacher.students.count, 'student') %></td>
-  </tr>
-<% end %>
+
+
+<table id='teacher'>
+  <thead>
+    <tr>
+      <th>Teacher Name</th>
+      <th>Number of Students</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.each do |teacher| %>
+    <tr>
+      <td><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher)%></td>
+      <td><%= pluralize(teacher.students.count, 'student') %></td>
+    </tr>
+  </tbody>
+  <% end %>
 </table>
