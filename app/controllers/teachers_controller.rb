@@ -5,7 +5,6 @@ class TeachersController < ApplicationController
 
   include TeachersHelper
 
-  before_filter :must_be_signed_in, only: [:index, :show, :edit]
   before_filter :allowed?(authorized?(params[:teacher_id]) ), only: [:update]
   before_filter :not_admin?, only: [:upload]
   before_action :find_teacher, only: [:show, :edit, :update]

@@ -10,6 +10,10 @@ class Teacher < ActiveRecord::Base
   validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :first_name, :last_name, presence: true
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   def self.add_detention(student)
     student.detentions += 1
     student.save
