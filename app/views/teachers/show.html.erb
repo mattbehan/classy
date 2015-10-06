@@ -9,4 +9,6 @@
   <h3> Total detentions given to<%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
   <h3> Average detentions of <%= @teacher.first_name %>'s students: <%= @teacher.average_detentions %> </h3>
 
+    <h3><%= link_to "#{@teacher.first_name}'s student list", "/teachers/#{@teacher.id}/students" %> </h3>
+
 <% end %>
