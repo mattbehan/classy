@@ -20,9 +20,26 @@ function uploadCSV () {
     var data;
 
     data = new FormData();
-    data.append('file', $('#file')[0].files[0]);
 
-    console.log(data);
+    var file = $('#file')[0].files[0]
+
+    if (typeof file != "undefined"){
+
+      // code here
+
+
+    } else {
+      return alert("Please select a file to upload")
+    }
+
+    data.append('file', file);
+
+
+
+    // console.log(f === true)
+
+    // console.log(data.length);
+
 
 
     var request = $.ajax({
