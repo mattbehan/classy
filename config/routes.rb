@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :teachers
 
-  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
 
-  post 'teachers/upload'
+  post 'teachers/upload' => 'teachers#upload'
   put 'teachers/:id/students/:id/detentions' => 'students#detentions'
   put 'teachers/:id/students/:id/add_to_classroom' => 'students#add_to_classroom'
   get 'teachers/not_admin' => 'teachers#not_admin'
