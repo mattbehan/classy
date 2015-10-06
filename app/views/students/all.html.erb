@@ -1,6 +1,11 @@
 <%= @students.each do |student| %>
 
 <h3> <a href=""> <%= student.full_name %> </a> </h3>
-<p> <BLOCKQUOTE> Teacher: <%= student.teacher.full_name %> </BLOCKQUOTE> </p>
-
+<p> <BLOCKQUOTE> Teacher: <%= student.teacher.full_name %>  </p>
+<p> GPA: <%= student.gpa %>  </p>
+<p> Gender: <%= student.gender %>  </p>
+<p> Grade: <%= student.grade %>  </p>
+<p> Detentions: <%= student.detentions %>  </p>
+<p> T shirt size: <%= student.t_shirt_size %>  </p>
+</BLOCKQUOTE>
 <% end %>

@@ -7,7 +7,7 @@ class TeachersController < ApplicationController
 
   before_filter only: [:update] { allowed?(params[:teacher_id]) }
   before_filter :not_admin?, only: [:upload, :admin]
-  before_action :find_teacher, only: [:show, :edit, :update]
+  before_filter :find_teacher, only: [:show, :edit, :update]
 
   def admin
     render :admin
