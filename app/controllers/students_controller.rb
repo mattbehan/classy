@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
 
   include StudentsHelper
 
-  before_filter :allowed(authorized?(params[:students_id]) ), only: [:detentions, :add_to_classroom]
+  before_filter only: [:update] { allowed?(params[:teacher_id]) }
   before_filter :not_admin?, only: [:remove_from_classroom]
   before_filter :find_teacher
   before_filter :find_student
