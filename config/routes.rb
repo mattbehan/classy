@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'students/already_assigned' => 'students#student_already_assigned'
   get 'students/all' => 'students#all'
 
+  get 'teachers/admin' => 'teachers#admin'
+
 
 
   # You can have the root of your site routed with "root"
