@@ -8,10 +8,6 @@
 </head>
 <body>
 
-<%= form_tag 'teachers/upload', :multipart => true do %>
-   <label for="file">Upload csv File</label> <%= file_field_tag "file" %>
-   <%= submit_tag "Save changes", id: "save" %>
-<% end %>
 
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
