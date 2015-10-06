@@ -1,6 +1,6 @@
-// $(document).ready(function(){
-//   // console.log("hi")
-//   uploadCSV();
-//
-//
-// });
+$(document).ready(function(){
+  // console.log("hi")
+  uploadCSV();
+
+
+});

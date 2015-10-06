@@ -6,12 +6,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root      'teachers#index'
-  resources :teachers do
-    resources :students
-  end
 
-  post 'teachers/upload'
+  post 'teachers/upload' => 'teachers#upload'
   put 'teachers/:id/students/:id/detentions' => 'students#detentions'
   put 'teachers/:id/students/:id/add_to_classroom' => 'students#add_to_classroom'
   get 'teachers/not_admin' => 'teachers#not_admin'
@@ -22,6 +18,10 @@ Rails.application.routes.draw do
 
   get 'teachers/admin' => 'teachers#admin'
 
+  root      'teachers#index'
+  resources :teachers do
+    resources :students
+  end
 
 
   # You can have the root of your site routed with "root"
