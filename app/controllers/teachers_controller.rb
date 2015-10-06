@@ -1,17 +1,26 @@
 require 'csv'
 
+include TeachersHelper
+
 class TeachersController < ApplicationController
 
-  before_filter
-  before_filter :authorized?(params[:student_id])
-  before_filter :admin?
+  before_filter :teacher_signed_in?
+  before_filter :authorized?(params[:teacher_id]), only: [:update]
+  before_filter :admin?, only: [:upload]
+  before_action :find_teacher, only: [:show, :edit, :update]
 
   def index
     @teachers = Teacher.all
   end
 
   def show
-    @teacher = Teacher.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    @teacher = update_attributes(teacher_update_params)
   end
 
   def upload
@@ -31,9 +40,10 @@ class TeachersController < ApplicationController
     redirect_to root_url
   end
 
-  def detentions
-    @student = Student.find(params[:student_id])
+  protected
 
+  def teacher_update_params
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
   end
 
 end
