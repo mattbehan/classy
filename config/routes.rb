@@ -12,6 +12,11 @@ Rails.application.routes.draw do
 
   post 'teachers/upload'
   put 'teachers/:id/students/:id/detentions' => 'students#detentions'
+  put 'teachers/:id/students/:id/add_to_classroom' => 'students#add_to_classroom'
+  get 'teachers/not_admin' => 'teachers#not_admin'
+  get 'teachers/not_authorized' => 'teachers#not_authorized'
+  get 'students/already_assigned' => 'students#student_already_assigned'
+  get 'students/all' => 'students#all'
 
 
 
