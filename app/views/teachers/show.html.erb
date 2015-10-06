@@ -10,3 +10,9 @@
   <h3> Average detentions of <%= @teacher.first_name %>'s students: <%= @teacher.average_detentions %> </h3>
 
 <% end %>
+
+<% if current_teacher.admin == true && @teacher.admin == false %>
+  <%= link_to "Make #{@teacher.first_name} an Admin", "/teachers/#{@teacher.id}/make_admin" %>
+<% else %>
+  <h3><%= @teacher.first_name %> is an administrator</h3>
+<% end %>
