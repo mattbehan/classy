@@ -41,7 +41,7 @@ class TeachersController < ApplicationController
 
         @error = e
         # response to ajax call
-        render inline: "The upload failed.\nPlease contact admin.\nError details: <%= @error %>"
+        render inline: "The upload failed.\n\nPlease contact admin.\n\nError details: <%= @error %>"
 
       end # end of error handling
 
