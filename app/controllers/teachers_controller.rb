@@ -5,9 +5,11 @@ class TeachersController < ApplicationController
 
   include TeachersHelper
 
-  # before_filter :allowed?(authorized?(params[:teacher_id])), only: [:update]
-  # before_filter :not_admin?, only: [:upload]
-  # before_action :find_teacher, only: [:show, :edit, :update]
+  before_filter :must_be_signed_in, only: [:index, :show, :edit]
+  before_filter only: [:update] { allowed?(params[:teacher_id]) }
+  before_filter :not_admin?, only: [:upload]
+  before_action :find_teacher, only: [:show, :edit, :update]
+
 
   def not_authorized
     render "not_authorized"

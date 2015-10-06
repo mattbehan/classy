@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def allowed? authorization_status
-    unless authorization_status
+  def allowed? id
+    unless authorized?(id)
       redirect_to "/teachers/not_authorized"
     end
   end
