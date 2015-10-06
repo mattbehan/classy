@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root      'teachers#index'
-  resources :teachers
-  resources :students
+  resources :teachers do
+    resources :students
+  end
 
   post 'teachers/upload'
 
