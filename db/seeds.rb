@@ -13,3 +13,5 @@ end
                   gender: genders.sample, grade: rand(9..12), gpa: rand(0..4).to_f,
                   detentions: rand(1..10), t_shirt_size: shirt_sizes.sample, teacher_id: rand(1..50))
 end
+
+#Seed this shit!
