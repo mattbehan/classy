@@ -1,4 +1,6 @@
-<h1><%= @teacher.first_name %> <%= @teacher.last_name %>'s profile</h1>
+<div class="card-panel light-blue">
+<h1 class='white-text'><%= @teacher.first_name %> <%= @teacher.last_name %>'s profile</h1>
+</div>
 <h3><%= @teacher.first_name %> currently has <%= pluralize(@teacher.students.count, 'student') %></h3>
 <h3> Average of <%= @teacher.first_name %>'s students GPA: <%= @teacher.average_GPA %> </h3>
 <h3> Total detentions given to<%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
