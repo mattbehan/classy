@@ -5,4 +5,8 @@ class StudentsController < ApplicationController
     @students = Student.where(teacher_id: @teacher.id)
   end
 
+  def show
+    @student = Student.find(params[:id])
+  end
+
 end
