@@ -6,6 +6,9 @@ class Teacher < ActiveRecord::Base
   has_many :students
 
   validates :email, uniqueness: true
+  # Prevents an invalid email address from being added to the database.
+  validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  validates :first_name, :last_name, presence: true
 
   def add_detention(student)
 
