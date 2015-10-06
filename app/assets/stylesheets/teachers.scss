@@ -1,6 +1,12 @@
 // Place all the styles related to the teachers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+<<<<<<< HEAD
 html {
     font-family: GillSans, Calibri, Trebuchet, sans-serif;
   }
+=======
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import "materialize";
+>>>>>>> 01e3310b889f057eda225c6c89fc27d793cd7380
