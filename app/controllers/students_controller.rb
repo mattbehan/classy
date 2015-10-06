@@ -40,4 +40,8 @@ class StudentsController < ApplicationController
     @studnet.save
   end
 
+  def show
+    @student = Student.find(params[:id])
+  end
+
 end
