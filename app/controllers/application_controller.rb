@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_teacher!
   protect_from_forgery with: :exception
 
-  helper_method :admin?, :authorized?, :not_admin?, :allowed?, :must_be_signed_in
+  helper_method :admin?, :authorized?, :not_admin?, :allowed?
 
   def authorized? id
     teacher_session == id.to_i
@@ -22,12 +22,6 @@ class ApplicationController < ActionController::Base
   def allowed? id
     unless authorized?(id)
       redirect_to "/teachers/not_authorized"
-    end
-  end
-
-  def must_be_signed_in
-    unless teacher_signed_in?
-      redirect_to login_path
     end
   end
 
