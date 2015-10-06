@@ -48,17 +48,20 @@ function uploadCSV () {
       data: data,
       processData: false,
       contentType: false,
+      // dataType: "html"
     });
 
     request.done(function(response){
       console.log("response done")
+      console.log(response)
+      alert(response);
     });
 
-    request.error(function(response) {
-      console.log("error");
+    request.fail(function(response) {
+      console.log("failed");
       console.log(response);
+      alert("Please contact admin.")
     });
-
 
   });
 }

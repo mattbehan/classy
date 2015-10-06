@@ -16,35 +16,40 @@ class TeachersController < ApplicationController
 
       begin
 
-      rescue
+        # setup for parsing
+        uploaded_file = params[:file]
+        file_content = uploaded_file.read
+        students = CSV.parse(file_content)
 
-      end
+        # parses data
+        students[1..-1].each do |student|
+          s = Student.new(first_name:   student[0].to_s, # first_name
+                          last_name:    student[1].to_s, # last_name
+                          gender:       student[2].to_s,
+                          grade:        student[3].to_i, # grade
+                          gpa:          student[4].to_f, # gpa
+                          detentions:   student[5].to_i, # detentions
+                          t_shirt_size: student[6].to_s) # t_shirt_size
+          s.save
+        end
 
-      # setup for parsing
-      uploaded_file = params[:file]
-      file_content = uploaded_file.read
-      students = CSV.parse(file_content)
+        # response to ajax call
+        render inline: "File uploaded!"
 
-      # parses data
-      students[1..-1].each do |student|
-        s = Student.new(first_name:   student[0].to_s, # first_name
-                        last_name:    student[1].to_s, # last_name
-                        gender:       student[2].to_s,
-                        grade:        student[3].to_i, # grade
-                        gpa:          student[4].to_f, # gpa
-                        detentions:   student[5].to_i, # detentions
-                        t_shirt_size: student[6].to_s) # t_shirt_size
-        s.save
-      end
 
-      redirect_to root_url # need a redirect
+      rescue Exception => e
+
+        @error = e
+        # response to ajax call
+        render inline: "The upload failed.\nPlease contact admin.\nError details: <%= @error %>"
+
+      end # end of error handling
 
     else
 
-      redirect_to root_url # need a redirect
+      render nothing: true
 
-    end # end if
-
+    end # end if xhr
   end # end of method
 
 end
