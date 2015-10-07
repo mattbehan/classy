@@ -3,7 +3,7 @@
 
   <% if @student.teacher %>
     <%= @student.teacher.full_name %>  </h4>
-  <% elsif !admin? %>
+  <% else %>
   none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{@student.id}/add_to_classroom", :method => :put %></h4>
   <% end %>
 

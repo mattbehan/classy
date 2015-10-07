@@ -107,7 +107,7 @@ class TeachersController < ApplicationController
   protected
 
   def teacher_update_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name)
+    params.require(:teacher).permit(:email, :password, :first_name, :last_name)
   end
 
 end

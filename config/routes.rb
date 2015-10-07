@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
 
 
-  post 'teachers/upload' => 'teachers#upload'
+
   put 'teachers/:teacher_id/students/:student_id/detentions' => 'students#detentions'
   put 'teachers/:teacher_id/students/:student_id/add_to_classroom' => 'students#add_to_classroom'
   put 'teachers/:teacher_id/students/:student_id/remove_from_classroom' => 'students#remove_from_classroom'
@@ -29,10 +29,10 @@ Rails.application.routes.draw do
 
   root      'teachers#index'
   resources :teachers, only: [:index, :show, :edit, :update] do
-    resources :students, only: [:index]
+    resources :students, only: [:index, :edit, :update]
   end
 
-
+  post 'teachers/upload' => 'teachers#upload'
   resources :students, only: [:show]
 
 
