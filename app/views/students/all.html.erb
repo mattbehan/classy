@@ -12,8 +12,11 @@
       <td> Teacher:
 
         <% if student.teacher %>
+
           <%= link_to "#{student.teacher.full_name}", teacher_path(student.teacher) %>  </td>
-        <% elsif !admin? %>
+
+        <% else %>
+
         none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{student.id}/add_to_classroom", :method => :put %></td>
         <% end %>
 

@@ -5,7 +5,7 @@ class TeachersController < ApplicationController
 
   include TeachersHelper
 
-  before_filter only: [:update] { allowed?(params[:teacher_id]) }
+  before_filter only: [:update, :edit] { allowed?(params[:teacher_id]) }
   before_filter :not_admin?, only: [:upload, :admin, :remove_from_classroom]
   before_filter :find_teacher, only: [:show, :edit, :update]
 
@@ -107,7 +107,7 @@ class TeachersController < ApplicationController
   protected
 
   def teacher_update_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name)
+    params.require(:teacher).permit(:email, :password, :first_name, :last_name)
   end
 
 end
