@@ -81,6 +81,10 @@ class TeachersController < ApplicationController
 
   end
 
+  def set_login
+    session[:user_id] = 1
+  end
+
   protected
 
   def teacher_update_params

@@ -1,6 +1,3 @@
 // $(document).ready(function(){
-//   // console.log("hi")
-//   uploadCSV();
-//
-//
-// });
+//       $('.parallax').parallax();
+//     });

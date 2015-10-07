@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'teachers/not_authorized' => 'teachers#not_authorized'
   get 'students/already_assigned' => 'students#student_already_assigned'
   get 'students/all' => 'students#all'
+  get 'set_login' => 'teachers#set_login'
 
 
 
