@@ -29,9 +29,11 @@ class TeachersController < ApplicationController
   end
 
   def edit
+    puts "in edit"
   end
 
   def update
+    puts "in edit"
     @teacher = update_attributes(teacher_update_params)
   end
 

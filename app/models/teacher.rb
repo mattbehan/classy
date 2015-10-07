@@ -26,7 +26,7 @@ class Teacher < ActiveRecord::Base
   end
 
   def average_GPA
-    students.sum(:gpa) / students.count
+    (students.sum(:gpa) / students.count).round(2)
   end
 
   def total_detentions

@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-
-
+  get 'students/all' => 'students#all'
+  get 'teachers/admin' => 'teachers#admin'
+  post 'teachers/upload' => 'teachers#upload'
+  resources :students, only: [:show]
 
   put 'teachers/:teacher_id/students/:student_id/detentions' => 'students#detentions'
   put 'teachers/:teacher_id/students/:student_id/add_to_classroom' => 'students#add_to_classroom'
@@ -19,21 +20,20 @@ Rails.application.routes.draw do
   get 'teachers/not_admin' => 'teachers#not_admin'
   get 'teachers/not_authorized' => 'teachers#not_authorized'
   get 'students/already_assigned' => 'students#student_already_assigned'
-  get 'students/all' => 'students#all'
+
 
   get 'teachers/:id/make_admin' => 'teachers#make_admin'
   get 'teachers/:id/remove_admin' => 'teachers#remove_admin'
 
 
-  get 'teachers/admin' => 'teachers#admin'
+
 
   root      'teachers#index'
   resources :teachers, only: [:index, :show, :edit, :update] do
     resources :students, only: [:index, :edit, :update]
   end
 
-  post 'teachers/upload' => 'teachers#upload'
-  resources :students, only: [:show]
+
 
 
   # You can have the root of your site routed with "root"
