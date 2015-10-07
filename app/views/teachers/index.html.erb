@@ -1,8 +1,6 @@
 <h1 class="all_teachers">All Teachers</h1>
 <h3>There are currently <%= @teachers.count %> active teachers.</h3>
 
-
-
 <table id='teacher'>
   <thead>
     <tr>
@@ -16,8 +14,10 @@
       <td><%= link_to "#{teacher.first_name} #{teacher.last_name}", teacher_path(teacher)%></td>
       <td><%= pluralize(teacher.students.count, 'student') %></td>
         <td>
-          <% if teacher.admin == false %>
+          <% if teacher.admin == false && current_teacher.admin == true %>
             <%= link_to "Make Admin", "/teachers/#{teacher.id}/make_admin" %>
+          <% elsif teacher.admin == true && current_teacher.admin == true %>
+            <%= link_to "Remove Admin", "/teachers/#{teacher.id}/remove_admin" %>
           <% end %>
         </td>
       <% end %>

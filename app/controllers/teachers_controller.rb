@@ -43,6 +43,14 @@ class TeachersController < ApplicationController
     redirect_to root_path
   end
 
+  def remove_admin
+    @teacher = Teacher.find(params[:id])
+    @teacher.admin = false
+    @teacher.save
+    flash[:notice] = "#{@teacher.full_name} has been removed as an admin."
+    redirect_to root_path
+  end
+
   def upload
 
     if request.xhr?
