@@ -36,7 +36,6 @@ class StudentsController < ApplicationController
     else
       redirect_to :student_already_assigned
     end
-
   end
 
   def remove_from_classroom
