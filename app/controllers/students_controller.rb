@@ -2,10 +2,10 @@ class StudentsController < ApplicationController
 
   include StudentsHelper
 
-  before_filter only: [:update, :index] { allowed?(params[:teacher_id]) }
   before_filter :not_admin?, only: [:remove_from_classroom]
   before_filter :find_teacher, except: [:all, :show]
   before_filter :find_student, except: [:all, :index, :show]
+  before_filter only: [:update] { allowed?(@teacher.id) }
 
 
   def all
@@ -36,7 +36,6 @@ class StudentsController < ApplicationController
     else
       redirect_to :student_already_assigned
     end
-
   end
 
   def remove_from_classroom

@@ -5,7 +5,7 @@ class TeachersController < ApplicationController
 
   include TeachersHelper
 
-  before_filter only: [:update] { allowed?(params[:teacher_id]) }
+  before_filter only: [:update, :edit] { allowed?(params[:teacher_id]) }
   before_filter :not_admin?, only: [:upload, :admin, :remove_from_classroom]
   before_filter :find_teacher, only: [:show, :edit, :update]
 
@@ -40,6 +40,14 @@ class TeachersController < ApplicationController
     @teacher.admin = true
     @teacher.save
     flash[:notice] = "#{@teacher.full_name} was succesfully set as an admin."
+    redirect_to root_path
+  end
+
+  def remove_admin
+    @teacher = Teacher.find(params[:id])
+    @teacher.admin = false
+    @teacher.save
+    flash[:notice] = "#{@teacher.full_name} has been removed as an admin."
     redirect_to root_path
   end
 

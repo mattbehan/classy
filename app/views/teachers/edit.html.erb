@@ -1,9 +1,9 @@
 <h2> Edit </h2>
 
 <%= form_for @teacher do |f| %>
-  <%= f.text_field :email, placeholder: "email@email.com" %>
-  <%= f.text_field :first_name, placeholder: "First Name" %>
-  <%= f.text_field :last_name, placeholder: "Last Name" %>
-  <%= f.text_field :password, placeholder: "password" %>
+  <%= f.text_field :email, value: "email@email.com" %>
+  <%= f.text_field :first_name, value: "First Name" %>
+  <%= f.text_field :last_name, value: "Last Name" %>
+  <%= f.text_field :password, value: "password" %>
   <%= f.submit "Submit changes" %>
 <% end %>

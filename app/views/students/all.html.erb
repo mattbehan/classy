@@ -11,7 +11,7 @@
   <% @students.each do |student| %>
     <tr>
       <td>  <%= link_to( "#{student.full_name}", student_path(student) ) %>  </td>
-      <td> Teacher:
+      <td>
 
         <% if student.teacher %>
           <%= student.teacher.full_name %>  </td>
