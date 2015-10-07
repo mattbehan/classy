@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :admin?, :authorized?, :not_admin?, :allowed?
 
-  def authorized? id
-    current_teacher.id == id.to_i
+  def authorized? input_id
+    current_teacher.id == input_id.to_i
   end
 
   def admin?

@@ -5,7 +5,7 @@ class TeachersController < ApplicationController
 
   include TeachersHelper
 
-  before_filter only: [:update, :edit] { allowed?(params[:teacher_id]) }
+  before_filter only: [:update, :edit] { allowed?(params[:id]) }
   before_filter :not_admin?, only: [:upload, :admin, :remove_from_classroom]
   before_filter :find_teacher, only: [:show, :edit, :update]
 
@@ -29,12 +29,12 @@ class TeachersController < ApplicationController
   end
 
   def edit
-    puts "in edit"
   end
 
   def update
-    puts "in edit"
-    @teacher = update_attributes(teacher_update_params)
+    @teacher.update(teacher_update_params)
+    @teacher.save
+    redirect_to teacher_path(@teacher)
   end
 
   def make_admin
@@ -109,7 +109,7 @@ class TeachersController < ApplicationController
   protected
 
   def teacher_update_params
-    params.require(:teacher).permit(:email, :password, :first_name, :last_name)
+    params.require(:teacher).permit(:email, :first_name, :last_name)
   end
 
 end

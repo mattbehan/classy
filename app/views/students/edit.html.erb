@@ -1,6 +1,6 @@
 <h2> Update GPA </h2>
 
-<%= form_for @student do |f| %>
+<%= form_for @student, url: {action: "update"} do |f| %>
   <%= f.text_field :gpa, value: "#{@student.gpa}" %>
   <%= f.submit "Submit changes" %>
 <% end %>
