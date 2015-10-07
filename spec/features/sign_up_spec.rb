@@ -1,4 +1,5 @@
 require 'spec_helper'
+# Working on log in via tests
 include Warden::Test::Helpers
 Warden.test_mode!
 
@@ -34,6 +35,6 @@ describe "the sign up process" do
   end
 
   it "signs in a valid teacher" do
-    
+
   end
 end
