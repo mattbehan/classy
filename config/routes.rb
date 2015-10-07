@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'students/all' => 'students#all'
 
   get 'teachers/:id/make_admin' => 'teachers#make_admin'
+  get 'teachers/:id/remove_admin' => 'teachers#remove_admin'
 
 
   get 'teachers/admin' => 'teachers#admin'

@@ -6,7 +6,7 @@
 <% if !@teacher.students.empty? %>
 
   <h3> Average of <%= @teacher.first_name %>'s students GPA: <%= @teacher.average_GPA %> </h3>
-  <h3> Total detentions given to<%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
+  <h3> Total detentions given to <%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
   <h3> Average detentions of <%= @teacher.first_name %>'s students: <%= @teacher.average_detentions %> </h3>
 
     <h3><%= link_to "#{@teacher.first_name}'s student list", "/teachers/#{@teacher.id}/students" %> </h3>
@@ -15,6 +15,8 @@
 
 <% if current_teacher.admin == true && @teacher.admin == false %>
   <%= link_to "Make #{@teacher.first_name} an Admin", "/teachers/#{@teacher.id}/make_admin" %>
+<% elsif current_teacher.admin == true && @teacher.admin == true %>
+  <%= link_to "Remove #{@teacher.first_name}'s Admin privileges", "/teachers/#{@teacher.id}/remove_admin" %>
 <% else %>
   <h3><%= @teacher.first_name %> is an administrator</h3>
 <% end %>
