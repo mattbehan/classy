@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   before_filter :not_admin?, only: [:remove_from_classroom]
   before_filter :find_teacher, except: [:all, :show]
   before_filter :find_student, except: [:all, :index, :show]
-  before_filter only: [:update, :index] { allowed?(@teacher.id) }
+  before_filter only: [:update] { allowed?(@teacher.id) }
 
 
   def all
