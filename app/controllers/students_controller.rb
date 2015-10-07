@@ -7,7 +7,6 @@ class StudentsController < ApplicationController
   before_filter :find_student, except: [:all, :index, :show]
   before_filter only: [:update, :edit] { allowed?(@teacher.id) }
 
-
   def all
     @students = Student.all
     render :all
