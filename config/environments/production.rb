@@ -82,7 +82,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'https://secret-coast-8313.herokuapp.com' }
   ActionMailer::Base.smtp_settings = {
     :address        => "smtp.gmail.com",
-    :port           => 587,
+    :port           => 25,
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
