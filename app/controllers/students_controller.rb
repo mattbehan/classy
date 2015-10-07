@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
 
   before_filter :not_admin?, only: [:remove_from_classroom]
   before_filter :find_teacher, except: [:all, :show]
-  before_filter :find_student, except: [:all, :index, :show]
+  before_filter :find_student, except: [:all, :index, :show, :edit, :update]
   before_filter only: [:update, :edit] { allowed?(@teacher.id) }
 
   def all
@@ -46,17 +46,19 @@ class StudentsController < ApplicationController
   end
 
   def edit
-
+    @student = Student.find(params[:id])
   end
 
   def update
+    @student = Student.find(params[:id])
     @student.update_attributes(student_update_params)
+    redirect_to student_path(@student)
   end
 
   protected
 
   def student_update_params
-    params.require(:student).permit(:email)
+    params.require(:student).permit(:gpa)
   end
 
 end

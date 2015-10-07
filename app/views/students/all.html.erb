@@ -35,6 +35,12 @@
         <td><%= button_to "Remove from classroom", "/teachers/#{student.teacher.id}/students/#{student.id}/remove_from_classroom", class: "custom-button", :method => :put %> </td>
       <% end %>
 
+      <% if student.teacher && authorized?(student.teacher.id) %>
+        <td>
+          <%= link_to "Edit gpa", "/teachers/#{student.teacher.id}/students/#{student.id}/edit" %>
+        </td>
+        <% end %>
+
     </tr>
   <% end %>
 </table>
