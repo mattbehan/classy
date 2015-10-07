@@ -1,25 +1,38 @@
 <div class="card-panel light-blue">
 <h1 class='white-text'><%= @teacher.first_name %> <%= @teacher.last_name %>'s profile</h1>
 </div>
-<h3><%= @teacher.first_name %> currently has <%= pluralize(@teacher.students.count, 'student') %></h3>
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active" href="#test1">Overview</a></li>
+      <li class="tab col s3"><a href="#test2">Class Averages</a></li>
+      <li class="tab col s3"><a href="#test3">Students</a></li>
+    </ul>
+  </div>
 
-<% if !@teacher.students.empty? %>
+  <div id="test1" class="col s12">
+    <% if allowed?(@teacher.id) %>
+      link_to "Edit your information", [:edit, @teacher]
+    <% end %>
 
-  <h3> Average of <%= @teacher.first_name %>'s students GPA: <%= @teacher.average_GPA %> </h3>
-  <h3> Total detentions given to <%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
-  <h3> Average detentions of <%= @teacher.first_name %>'s students: <%= @teacher.average_detentions %> </h3>
+    <% if current_teacher.admin == true && @teacher.admin == false %>
+      <%= link_to "Make #{@teacher.first_name} an Admin", "/teachers/#{@teacher.id}/make_admin" %>
+    <% elsif current_teacher.admin == true && @teacher.admin == true %>
+      <%= link_to "Remove #{@teacher.first_name}'s Admin privileges", "/teachers/#{@teacher.id}/remove_admin" %>
+    <% else %>
+      <h3><%= @teacher.first_name %> is an administrator</h3>
+    <% end %>
+  </div>
 
+  <div id="test2" class="col s12">
+    <% if !@teacher.students.empty? %>
+    <h3> Average of <%= @teacher.first_name %>'s students GPA: <%= @teacher.average_GPA %> </h3>
+    <h3> Total detentions given to<%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
+    <h3> Average detentions of <%= @teacher.first_name %>'s students: <%= @teacher.average_detentions %> </h3>
+    <% end %>
+  </div>
+
+  <div id="test3" class="col s12">
     <h3><%= link_to "#{@teacher.first_name}'s student list", "/teachers/#{@teacher.id}/students" %> </h3>
-
-<% end %>
-<% if allowed?(@teacher.id) %>
-  link_to "Edit your information", [:edit, @teacher]
-<% end %>
-
-<% if current_teacher.admin == true && @teacher.admin == false %>
-  <%= link_to "Make #{@teacher.first_name} an Admin", "/teachers/#{@teacher.id}/make_admin" %>
-<% elsif current_teacher.admin == true && @teacher.admin == true %>
-  <%= link_to "Remove #{@teacher.first_name}'s Admin privileges", "/teachers/#{@teacher.id}/remove_admin" %>
-<% else %>
-  <h3><%= @teacher.first_name %> is an administrator</h3>
-<% end %>
+  </div>
+</div>
