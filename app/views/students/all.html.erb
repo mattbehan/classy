@@ -1,10 +1,10 @@
 <table>
   <th>Name</th>
+  <th>Teacher</th>
+  <th>GPA</th>
   <th>Gender</th>
   <th>Grade</th>
-  <th>GPA</th>
   <th>Detentions</th>
-  <th>T-Shirt Size</th>
 
   <% @students.each do |student| %>
     <tr>
@@ -12,7 +12,7 @@
       <td> Teacher:
 
         <% if student.teacher %>
-          <%= student.teacher.full_name %>  </td>
+          <%= link_to "#{student.teacher.full_name}", teacher_path(student.teacher) %>  </td>
         <% elsif !admin? %>
         none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{student.id}/add_to_classroom", :method => :put %></td>
         <% end %>
@@ -23,11 +23,11 @@
       <td> Detentions: <%= student.detentions %>  </td>
 
       <% if authorized?(student.id)%>
-          <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", :method => :put %></td>
+          <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", class: "custom-button", :method => :put %></td>
         <% end %>
 
       <% if admin? && student.teacher %>
-        <td><%= button_to "Remove from classroom", "/teachers/#{student.teacher.id}/students/#{student.id}/remove_from_classroom", :method => :put %> </td>
+        <td><%= button_to "Remove from classroom", "/teachers/#{student.teacher.id}/students/#{student.id}/remove_from_classroom", class: "custom-button", :method => :put %> </td>
       <% end %>
 
     </tr>

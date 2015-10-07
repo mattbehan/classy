@@ -1,4 +1,10 @@
 require 'spec_helper'
+include Warden::Test::Helpers
+Warden.test_mode!
+
+
+teacher = FactoryGirl.create(:teacher)
+login_as(teacher, scope: :teacher)
 
 describe "the sign up process" do
   before :each do
@@ -25,5 +31,9 @@ describe "the sign up process" do
     within("p") do
       expect(page).to have_content("Invalid email or password")
     end
+  end
+
+  it "signs in a valid teacher" do
+    
   end
 end
