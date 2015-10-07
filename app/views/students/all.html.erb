@@ -1,11 +1,13 @@
 <table>
-  <th>Name</th>
-  <th>Gender</th>
-  <th>Grade</th>
-  <th>GPA</th>
-  <th>Detentions</th>
-  <th>T-Shirt Size</th>
-
+  <thead>
+    <th>Name</th>
+    <th>Teacher</th>
+    <th>GPA</th>
+    <th>Gender</th>
+    <th>Grade</th>
+    <th>Detentions</th>
+  </thead>
+  <tbody>
   <% @students.each do |student| %>
     <tr>
       <td>  <%= link_to( "#{student.full_name}", student_path(student) ) %>  </td>
@@ -17,10 +19,10 @@
         none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{student.id}/add_to_classroom", :method => :put %></td>
         <% end %>
 
-      <td> GPA: <%= student.gpa %>  </td>
-      <td> Gender: <%= student.gender %>  </td>
-      <td> Grade: <%= student.grade %>  </td>
-      <td> Detentions: <%= student.detentions %>  </td>
+      <td>  <%= student.gpa %>  </td>
+      <td>  <%= student.gender %>  </td>
+      <td>  <%= student.grade %>  </td>
+      <td>  <%= student.detentions %>  </td>
 
       <% if authorized?(student.id)%>
           <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", :method => :put %></td>
@@ -32,4 +34,5 @@
 
     </tr>
   <% end %>
+</tbody>
 </table>
