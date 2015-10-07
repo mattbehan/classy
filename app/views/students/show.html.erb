@@ -1,9 +1,11 @@
-<h2>  <%= @student.full_name %>  </h2>
+<div class="card-panel light-blue">
+<h2 class='white-text'><%= @student.full_name %>'s profile</h2>
+</div>
 <h4> Teacher:
 
   <% if @student.teacher %>
     <%= @student.teacher.full_name %>  </h4>
-  <% elsif !admin? %>
+  <% else %>
   none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{@student.id}/add_to_classroom", :method => :put %></h4>
   <% end %>
 
@@ -13,9 +15,9 @@
 <h4> Detentions: <%= @student.detentions %>  </h4>
 
 <% if authorized?(@student.id)%>
-    <h4><%= button_to "Add detention", "/teachers/#{@student.teacher.id}/students/#{@student.id}/detentions", :method => :put %></h4>
+    <h4><%= button_to "Add detention", "/teachers/#{@student.teacher.id}/students/#{@student.id}/detentions", :method => :put%></h4>
   <% end %>
 
 <% if admin? && @student.teacher %>
-  <h4><%= button_to "Remove from classroom", "/teachers/#{@student.teacher.id}/students/#{@student.id}/remove_from_classroom", :method => :put %> </h4>
+  <h4><%= button_to "Remove from classroom", "/teachers/#{@student.teacher.id}/students/#{@student.id}/remove_from_classroom", :method => :put%> </h4>
 <% end %>

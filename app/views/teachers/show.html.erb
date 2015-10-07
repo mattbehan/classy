@@ -11,7 +11,10 @@
   </div>
 
   <div id="test1" class="col s12">
-    <h3><%= @teacher.first_name %> currently has <%= pluralize(@teacher.students.count, 'student') %></h3>
+    <% if allowed?(@teacher.id) %>
+      link_to "Edit your information", [:edit, @teacher]
+    <% end %> -->
+
     <% if current_teacher.admin == true && @teacher.admin == false %>
       <%= link_to "Make #{@teacher.first_name} an Admin", "/teachers/#{@teacher.id}/make_admin" %>
     <% elsif current_teacher.admin == true && @teacher.admin == true %>
