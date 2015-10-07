@@ -1,0 +1,35 @@
+<table>
+  <th>Name</th>
+  <th>Gender</th>
+  <th>Grade</th>
+  <th>GPA</th>
+  <th>Detentions</th>
+  <th>T-Shirt Size</th>
+
+  <% @students.each do |student| %>
+    <tr>
+      <td>  <%= link_to( "#{student.full_name}", student_path(student) ) %>  </td>
+      <td> Teacher:
+
+        <% if student.teacher %>
+          <%= student.teacher.full_name %>  </td>
+        <% elsif !admin? %>
+        none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{student.id}/add_to_classroom", :method => :put %></td>
+        <% end %>
+
+      <td> GPA: <%= student.gpa %>  </td>
+      <td> Gender: <%= student.gender %>  </td>
+      <td> Grade: <%= student.grade %>  </td>
+      <td> Detentions: <%= student.detentions %>  </td>
+
+      <% if authorized?(student.id)%>
+          <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", :method => :put %></td>
+        <% end %>
+
+      <% if admin? && student.teacher %>
+        <td><%= button_to "Remove from classroom", "/teachers/#{student.teacher.id}/students/#{student.id}/remove_from_classroom", :method => :put %> </td>
+      <% end %>
+
+    </tr>
+  <% end %>
+</table>

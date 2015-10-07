@@ -2,10 +2,10 @@ class StudentsController < ApplicationController
 
   include StudentsHelper
 
-  before_filter only: [:update] { allowed?(params[:teacher_id]) }
+  before_filter only: [:update, :index] { allowed?(params[:teacher_id]) }
   before_filter :not_admin?, only: [:remove_from_classroom]
-  before_filter :find_teacher
-  before_filter :find_student
+  before_filter :find_teacher, except: [:all, :show]
+  before_filter :find_student, except: [:all, :index, :show]
 
 
   def all
@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
   end
 
   def index
+    @students = @teacher.students
   end
 
   def student_already_assigned
@@ -22,22 +23,26 @@ class StudentsController < ApplicationController
 
   def detentions
     Teacher.add_detention(@student)
+    redirect_to @teacher
   end
 
 # not sure where to render on either of these since student button needs to be able to be clicked from both student show
   def add_to_classroom
-    if @student.teacher == nil
+    if (@teacher.admin)
+      redirect_to "teachers/not_authorized"
+    elsif @student.teacher == nil
       @teacher.students << @student
-      render :"teachers/index"
+      redirect_to :back
     else
-      render :"teachers/index"
+      redirect_to :student_already_assigned
     end
 
   end
 
   def remove_from_classroom
-    @student.teacher = nil
-    @studnet.save
+    @student.teacher_id = nil
+    @student.save
+    redirect_to :back
   end
 
   def show

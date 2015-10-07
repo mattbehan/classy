@@ -2,6 +2,19 @@
 <h1 class='white-text'><%= @teacher.first_name %> <%= @teacher.last_name %>'s profile</h1>
 </div>
 <h3><%= @teacher.first_name %> currently has <%= pluralize(@teacher.students.count, 'student') %></h3>
-<h3> Average of <%= @teacher.first_name %>'s students GPA: <%= @teacher.average_GPA %> </h3>
-<h3> Total detentions given to<%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
-<h3> Average detentions of <%= @teacher.first_name %>'s students: <%= @teacher.average_detentions %> </h3>
+
+<% if !@teacher.students.empty? %>
+
+  <h3> Average of <%= @teacher.first_name %>'s students GPA: <%= @teacher.average_GPA %> </h3>
+  <h3> Total detentions given to<%= @teacher.first_name %>'s students: <%= @teacher.total_detentions %> </h3>
+  <h3> Average detentions of <%= @teacher.first_name %>'s students: <%= @teacher.average_detentions %> </h3>
+
+    <h3><%= link_to "#{@teacher.first_name}'s student list", "/teachers/#{@teacher.id}/students" %> </h3>
+
+<% end %>
+
+<% if current_teacher.admin == true && @teacher.admin == false %>
+  <%= link_to "Make #{@teacher.first_name} an Admin", "/teachers/#{@teacher.id}/make_admin" %>
+<% else %>
+  <h3><%= @teacher.first_name %> is an administrator</h3>
+<% end %>

@@ -10,6 +10,10 @@ class Teacher < ActiveRecord::Base
   validates_format_of :email, with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :first_name, :last_name, presence: true
 
+  def full_name
+    first_name + " " + last_name
+  end
+
   def self.add_detention(student)
     student.detentions += 1
     student.save
@@ -18,6 +22,7 @@ class Teacher < ActiveRecord::Base
   # Sets the passed in teacher as an admin IF the current teacher is an admin.
   def set_admin(teacher)
     self.admin ? teacher.admin = true : nil
+    teacher.save
   end
 
   def average_GPA

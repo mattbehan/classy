@@ -1,24 +1,38 @@
 Rails.application.routes.draw do
   devise_for :teachers
 
+  devise_scope :teacher do
+    get "sign_up", to: "teachers#new_session"
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root      'teachers#index'
-  resources :teachers do
-    resources :students
-  end
 
-  post 'teachers/upload'
-  put 'teachers/:id/students/:id/detentions' => 'students#detentions'
-  put 'teachers/:id/students/:id/add_to_classroom' => 'students#add_to_classroom'
+
+  post 'teachers/upload' => 'teachers#upload'
+  put 'teachers/:teacher_id/students/:student_id/detentions' => 'students#detentions'
+  put 'teachers/:teacher_id/students/:student_id/add_to_classroom' => 'students#add_to_classroom'
+  put 'teachers/:teacher_id/students/:student_id/remove_from_classroom' => 'students#remove_from_classroom'
+
   get 'teachers/not_admin' => 'teachers#not_admin'
   get 'teachers/not_authorized' => 'teachers#not_authorized'
   get 'students/already_assigned' => 'students#student_already_assigned'
   get 'students/all' => 'students#all'
-  get 'set_login' => 'teachers#set_login'
 
+  get 'teachers/:id/make_admin' => 'teachers#make_admin'
+
+
+  get 'teachers/admin' => 'teachers#admin'
+
+  root      'teachers#index'
+  resources :teachers, only: [:index, :show, :edit, :update] do
+    resources :students, only: [:index]
+  end
+
+
+  resources :students, only: [:show]
 
 
   # You can have the root of your site routed with "root"
