@@ -27,9 +27,7 @@ class StudentsController < ApplicationController
 
 # not sure where to render on either of these since student button needs to be able to be clicked from both student show
   def add_to_classroom
-    if (@teacher.admin)
-      redirect_to "teachers/not_authorized"
-    elsif @student.teacher == nil
+    if @student.teacher == nil
       @teacher.students << @student
       redirect_to :back
     else

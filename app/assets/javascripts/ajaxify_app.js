@@ -32,3 +32,7 @@ function uploadCSV () {
 
   });
 }
+
+function voteButton () {
+  $()
+}
