@@ -12,6 +12,9 @@
     <h3><%= link_to "#{@teacher.first_name}'s student list", "/teachers/#{@teacher.id}/students" %> </h3>
 
 <% end %>
+<% if allowed?(@teacher.id) %>
+  link_to "Edit your information", [:edit, @teacher]
+<% end %>
 
 <% if current_teacher.admin == true && @teacher.admin == false %>
   <%= link_to "Make #{@teacher.first_name} an Admin", "/teachers/#{@teacher.id}/make_admin" %>
