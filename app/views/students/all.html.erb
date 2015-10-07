@@ -23,7 +23,7 @@
       <td> Detentions: <%= student.detentions %>  </td>
 
       <% if authorized?(student.id)%>
-          <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", :method => :put %></td>
+          <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", :method => :put, :id => "detention-button-xx" %></td>
         <% end %>
 
       <% if admin? && student.teacher %>

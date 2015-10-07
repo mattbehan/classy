@@ -12,7 +12,7 @@
 <h4> Grade: <%= @student.grade %>  </h4>
 <h4> Detentions: <%= @student.detentions %>  </h4>
 
-<% if authorized?(@student.id)%>
+<% if authorized?(@student.teacher.id)%>
     <h4><%= button_to "Add detention", "/teachers/#{@student.teacher.id}/students/#{@student.id}/detentions", :method => :put %></h4>
   <% end %>
 
