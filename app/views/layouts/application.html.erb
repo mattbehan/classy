@@ -11,7 +11,12 @@
 </head>
 <body>
   <ul id="dropdown1" class="dropdown-content">
-    <li><%= link_to "Profile", teacher_path(current_teacher) %></li>
+    <% if current_teacher %>
+      <li><%= link_to "Profile", teacher_path(current_teacher) %></li>
+    <% end %>
+    <% if current_teacher && current_teacher.admin == true %>
+      <li><%= link_to "Add a Teacher", sign_up_path %></li>
+    <% end %>
     <li><%= link_to "Teachers", teachers_path %></li>
     <li><%= link_to "Students", students_all_path %></li>
     <li><a href="#!">Admin</a></li>
