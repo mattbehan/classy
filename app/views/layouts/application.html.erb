@@ -19,7 +19,7 @@
     <% end %>
     <li><%= link_to "Teachers", teachers_path %></li>
     <li><%= link_to "Students", students_all_path %></li>
-    <li><a href="#!">Admin</a></li>
+    <li><%= link_to "Admin", teachers_admin_path %><li>
     <li><%= link_to "Logout", destroy_teacher_session_path, method: :delete %></li>
   </ul>
   <nav>
