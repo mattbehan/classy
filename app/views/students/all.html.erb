@@ -1,38 +1,35 @@
 <table>
-  <thead>
-    <th>Name</th>
-    <th>Teacher</th>
-    <th>GPA</th>
-    <th>Gender</th>
-    <th>Grade</th>
-    <th>Detentions</th>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td>  <%= link_to( "#{student.full_name}", student_path(student) ) %>  </td>
-        <td>
+  <th>Name</th>
+  <th>Teacher</th>
+  <th>GPA</th>
+  <th>Gender</th>
+  <th>Grade</th>
+  <th>Detentions</th>
 
-          <% if student.teacher %>
+  <% @students.each do |student| %>
+    <tr>
+      <td>  <%= link_to( "#{student.full_name}", student_path(student) ) %>  </td>
+      <td> Teacher:
 
-            <%= link_to "#{student.teacher.full_name}", teacher_path(student.teacher) %>  </td>
+        <% if student.teacher %>
 
-          <% else %>
+          <%= link_to "#{student.teacher.full_name}", teacher_path(student.teacher) %>  </td>
 
-           <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{student.id}/add_to_classroom", :method => :put, class: "custom-button" %></td>
-          <% end %>
+        <% else %>
 
-        <td>  <%= student.gpa %>  </td>
-        <td>  <%= student.gender %>  </td>
-        <td>  <%= student.grade %>  </td>
-        <td>  <%= student.detentions %>  </td>
+        none, <%= button_to "Add to your classroom", "/teachers/#{current_teacher.id}/students/#{student.id}/add_to_classroom", :method => :put %></td>
+        <% end %>
 
-        <% if authorized?(student.id)%>
+      <td> GPA: <%= student.gpa %>  </td>
+      <td> Gender: <%= student.gender %>  </td>
+      <td> Grade: <%= student.grade %>  </td>
+      <td> Detentions: <%= student.detentions %>  </td>
 
-            <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", :method => :put, :id => "detention-button-xx" %></td>
+      <% if student.teacher && authorized?(student.teacher.id) %>
 
-          <% end %>
+          <td><%= button_to "Add detention", "/teachers/#{student.teacher.id}/students/#{student.id}/detentions", :method => :put, :id => "detention-button-xx" %></td>
 
+        <% end %>
 
       <% if admin? && student.teacher %>
         <td><%= button_to "Remove from classroom", "/teachers/#{student.teacher.id}/students/#{student.id}/remove_from_classroom", class: "custom-button", :method => :put %> </td>
@@ -46,7 +43,4 @@
 
     </tr>
   <% end %>
-
-  </tbody>
-
 </table>

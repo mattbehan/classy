@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
 
   def detentions
     Teacher.add_detention(@student)
-    redirect_to @teacher
+    redirect_to :back
   end
 
 # not sure where to render on either of these since student button needs to be able to be clicked from both student show
