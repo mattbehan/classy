@@ -1,5 +1,15 @@
-first_name, last_name, gender, grade, gpa, detentions, t_shirt_size
-Paulo, Gonzalez, M, 3, 3.0, 0, L
-Matt, Behan, M, 3, 3.0, 15, XL
-Harrison, Klutcher, M, 3, 3.0, 0, XL
-Nic, Lombardi, M, 3, 3.0, 0, L
+First+AF8-Name,Last+AF8-Name,Gender,Grade,GPA,Detentions,T+AF8-Shirt+AF8-Size
+Alexis,Moody,F,3,3.0,0,L
+Bill,Leidy,M,3,3.0,0,L
+Chris,Zajac,M,3,3.0,0,L
+David,Campbell,M,3,3.0,0,L
+Greg,Ptasinski,M,3,3.0,0,L
+Harrison,Klucher,M,3,3.0,0,L
+Larissa,Pittenger,F,3,3.0,0,L
+Maddie,Kasula,F,3,3.0,0,L
+Mat,Liew,M,3,3.0,0,L
+Matt,Behan,M,3,3.0,15,L
+Nic,Lombardi,M,3,3.0,6,L
+Paulo,Gonzalez,M,3,3.0,0,L
+Rodica,Trifan,M,3,3.0,0,L
+Wyeth,Jackson,M,3,3.0,0,L
