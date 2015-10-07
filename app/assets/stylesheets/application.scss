@@ -6,6 +6,16 @@ $primary-color: color("blue", "lighten-2") !default;
 html {
     font-family: 'Lato';
   }
+#front{
+  margin-top:58px;
+}
+
+#front-title {
+  font-family:'Lobster';
+  font-size: 310px;
+  color: white;
+  opacity: 0.93;
+}
 
 nav a{
   font-family:'Lobster';
