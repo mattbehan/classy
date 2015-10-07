@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'teachers/not_authorized' => 'teachers#not_authorized'
   get 'students/already_assigned' => 'students#student_already_assigned'
   get 'students/all' => 'students#all'
+
   get 'teachers/:id/make_admin' => 'teachers#make_admin'
 
 
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   resources :teachers, only: [:index, :show, :edit, :update] do
     resources :students, only: [:index]
   end
+
 
   resources :students, only: [:show]
 

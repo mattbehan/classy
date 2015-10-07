@@ -1,5 +1,26 @@
 <style>nav { display:none; }</style>
-<h2>Log in</h2>
+
+<script>
+$(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>
+<div class="parallax-container">
+  <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <div id="front">
+            <h1 id="front-title" class="header col s12 light">Classy</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="parallax"><img src="/assets/Classroom.jpg"></div>
+</div>
+<div class="section white">
+  <div class="row container">
+
+<h2>Login</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -20,8 +41,15 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <a class="waves-effect waves-light btn">Login</a>
+    <%= f.submit %>
   </div>
 <% end %>
 
+
 <%= render "teachers/shared/confirmation_instructions" %>
+  </div>
+</div>
+<div class="parallax-container">
+  <div class="parallax"><img src="/assets/Classroom.jpg"></div>
+</div>
