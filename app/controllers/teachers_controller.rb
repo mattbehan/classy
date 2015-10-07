@@ -90,6 +90,11 @@ class TeachersController < ApplicationController
                                       :password, :password_confirmation)
   end
 
+  def new_session
+    @teacher = Teacher.new
+    render :"teachers/registrations/new"
+  end
+
 
   protected
 
