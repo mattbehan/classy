@@ -1,10 +1,11 @@
-{<img src="http://static.filmmakermagazine.com/wp-content/uploads/2010/01/Sweetgrass1-762112.jpg" alt="Coverage Status" />}[https://coveralls.io/r/replace_with_our_group_here]
+{<img src="https://coveralls.io/repos/chi-cicadas-2015/BROCATHOUSE/badge.svg?branch=master&service=github" alt="Coverage Status" />}[https://coveralls.io/github/chi-cicadas-2015/BROCATHOUSE?branch=master]
 
+<h1>Classy</h1>
 
-=== How to upload a csv file:
-
-   Select the file to upload
-
-   Something else over here, lets see how it looks
-
-   <tt>Yeah baby</tt>
+<p>
+  Classy is an application that tracks student data, in relation to teachers.
+  Teachers can only be invited to the app by another teacher who has administrator
+  privileges.  Classy makes it easy for teachers to check how many students they
+  have, look up what other teachers' classrooms look like, and gather
+  basic statistical information about their students.
+</p>
