@@ -3,9 +3,12 @@ require 'faker'
 shirt_sizes = ["S", "M", "L", "XL"]
 genders = ["M", "F", "Not Provided"]
 
+
+# change seed file for heroku so emails and confirmations are not sent for seeds
 50.times do
-  Teacher.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                  email: Faker::Internet.email, password: Faker::Internet.password(12))
+  teacher = Teacher.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                  email: Faker::Internet.email, password: "password")
+  teacher.confirm!
 end
 
 250.times do
@@ -14,4 +17,3 @@ end
                   detentions: rand(1..10), t_shirt_size: shirt_sizes.sample, teacher_id: rand(1..50))
 end
 
-#Seed this shit!

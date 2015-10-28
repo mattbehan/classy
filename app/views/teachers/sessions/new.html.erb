@@ -39,14 +39,16 @@ $(document).ready(function(){
       <%= f.label :remember_me %>
     </div>
   <% end -%>
-  <!-- Let's fuck this button up -->
+  
   <div class="actions">
     <%= f.submit "Log in", class: "custom-button" %>
   </div>
 <% end %>
 
+<p><%= link_to "Sign up", new_teacher_registration_path %></p>
 
-<%= render "teachers/shared/confirmation_instructions" %>
+<p><%= render "teachers/shared/confirmation_instructions" %></p>
+
   </div>
 </div>
 <div class="parallax-container">

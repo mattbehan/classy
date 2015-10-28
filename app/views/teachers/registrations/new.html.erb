@@ -1,4 +1,3 @@
-<% if current_teacher && current_teacher.admin == true %>
   <h2>Register a New Teacher</h2>
 
   <%= form_for(@teacher, url: registration_path(@teacher)) do |f| %>
@@ -36,9 +35,6 @@
     </div>
   <% end %>
 
+
   <%= render "teachers/shared/links" %>
-<% else %>
-  <h1>Sorry, you don't have permission to add a new teacher.</h1>
-  <h3>Only administrators can request access for a new teacher to join
-    the system.</h3>
-<% end %>
+
